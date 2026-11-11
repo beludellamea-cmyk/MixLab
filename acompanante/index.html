@@ -154,6 +154,10 @@ dialog#lb::backdrop{background:rgba(0,0,0,.75)}
 footer.cred{margin-top:2rem;display:grid;gap:.8rem;font-size:.95rem;color:var(--muted)}
 footer.cred p{color:inherit}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+/* El atributo hidden debe prevalecer sobre display:grid/flex del diseño. */
+[hidden]{display:none!important}
+/* Marcador visible al proyectar sin alterar los demás apartados. */
+.sec.marked>header h2{background:var(--hl);color:var(--hl-fg);padding:.25rem .5rem;border-radius:10px}
 </style>
 </head>
 <body>
@@ -192,7 +196,9 @@ footer.cred p{color:inherit}
     <p class="eyebrow">Físico-Química · 1.º año · Acompañante de clase</p>
     <h1 id="h1" tabindex="-1">¿Qué son las mezclas?</h1>
     <p class="lead" data-read>Este es el mismo contenido del Anexo A impreso. Podés leerlo, escucharlo, ampliar las imágenes y volver cuando lo necesites. La profesora explica; esta página te acompaña.</p>
-    <p class="note">Ninguna parte es obligatoria ni tiene tiempo. Usá lo que te ayude. Lo que escribas queda solo en este dispositivo.</p>
+    <p class="note">Ninguna parte es obligatoria ni tiene tiempo. Usá lo que te ayude. Tus respuestas y preguntas se guardan en este navegador, incluso si cerrás la página; no se envían a nadie. Si compartís el dispositivo, podés borrarlas al terminar.</p>
+    <p class="note">Para acompañar la explicación, marcá la parte que está explicando la profesora. La marca funciona solo en este dispositivo: no sincroniza automáticamente con otras pantallas.</p>
+    <div class="row"><button type="button" class="btn sm" id="goMark" hidden>Ir a la parte marcada</button></div>
     <nav class="idx" aria-label="Partes del material"><ol id="idx"></ol></nav>
   </header>
 
@@ -260,6 +266,7 @@ footer.cred p{color:inherit}
       <div class="row" style="flex-wrap:nowrap"><input type="text" id="qprof" placeholder="Escribí tu pregunta"><button type="button" class="btn sm" id="qAdd">Agregar</button></div>
       <ul class="qlist" id="qList" aria-label="Mis preguntas para la profe"></ul>
       <div class="row"><button type="button" class="btn sm" id="qCopy">Copiar mis preguntas</button><span class="note" id="qMsg" role="status"></span></div></div>
+    <div class="ctl"><button type="button" class="btn sm" id="clearWork">Borrar mis respuestas y preguntas</button><span class="note" id="clearMsg" role="status"></span></div>
   </section>
   <!-- 7 -->
   <section class="sec" id="s7" aria-labelledby="t7" data-title="Para ir más lejos">
@@ -389,8 +396,10 @@ function goSec(id,focus=true){
 }
 function paintMark(){
   SECS.forEach(s=>{const on=S.mark===s.id;s.classList.toggle('marked',on);const b=$('[data-mark]',s);b.setAttribute('aria-pressed',on);b.textContent=on?'✓ La clase va por acá':'Marcar: la clase va por acá'});
-  $$('#idx a').forEach(a=>{$('.here',a).hidden=a.dataset.sec!==S.mark});
+  $('#idx a').forEach(a=>{$('.here',a).hidden=a.dataset.sec!==S.mark});
+  $('#goMark').hidden=!S.mark;
 }
+$('#goMark').addEventListener('click',()=>{if(S.mark)goSec(S.mark)});
 document.addEventListener('click',e=>{
   const l=e.target.closest('[data-listen]');if(l){const s=document.getElementById(l.dataset.listen);readScope(s,s.dataset.title);return}
   const m=e.target.closest('[data-mark]');if(m){S.mark=S.mark===m.dataset.mark?'':m.dataset.mark;paintMark();save();say(S.mark?'Marcaste dónde va la clase.':'Quitaste la marca.');return}
@@ -482,11 +491,26 @@ $('#chk').addEventListener('click',e=>{const b=e.target.closest('[data-ck]');if(
 $('#ans').value=S.ans||'';$('#ans').addEventListener('input',e=>{S.ans=e.target.value;save()});
 function copyText(t,msgEl){const ok=()=>{msgEl.textContent='Copiado.'},no=()=>{msgEl.textContent='No se pudo copiar solo. Seleccioná el texto y copialo.'};try{navigator.clipboard.writeText(t).then(ok,no)}catch(e){no()}}
 document.addEventListener('click',e=>{const c=e.target.closest('[data-copy]');if(!c)return;const f=$('#'+c.dataset.copy);f.focus();f.select();copyText(f.value,$('[data-msg="'+c.dataset.copy+'"]'))});
-function drawQ(){$('#qList').innerHTML=S.qs.map((q,i)=>`<li>${q.replace(/</g,'&lt;')} <button type="button" class="btn sm" data-qdel="${i}" aria-label="Quitar la pregunta ${i+1}">Quitar</button></li>`).join('')}
+function drawQ(){
+  const list=$('#qList');list.replaceChildren();
+  S.qs.forEach((q,i)=>{
+    const li=document.createElement('li');li.append(document.createTextNode(q+' '));
+    const btn=document.createElement('button');btn.type='button';btn.className='btn sm';
+    btn.dataset.qdel=i;btn.setAttribute('aria-label','Quitar la pregunta '+(i+1));btn.textContent='Quitar';
+    li.append(btn);list.append(li);
+  });
+}
 function addQ(){const v=$('#qprof').value.trim();if(!v)return;S.qs.push(v);$('#qprof').value='';save();drawQ();$('#qMsg').textContent='Pregunta agregada.'}
 $('#qAdd').addEventListener('click',addQ);$('#qprof').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();addQ()}});
 $('#qList').addEventListener('click',e=>{const d=e.target.closest('[data-qdel]');if(d){S.qs.splice(+d.dataset.qdel,1);save();drawQ()}});
 $('#qCopy').addEventListener('click',()=>copyText(S.qs.map((q,i)=>(i+1)+'. '+q).join('\n'),$('#qMsg')));
+$('#clearWork').addEventListener('click',()=>{
+  if(!S.ans&&!S.qs.length){$('#clearMsg').textContent='No hay respuestas ni preguntas guardadas.';return}
+  if(!window.confirm('¿Querés borrar tus respuestas y preguntas guardadas en este navegador? Esta acción no se puede deshacer.'))return;
+  S.ans='';S.qs=[];$('#ans').value='';$('#qprof').value='';
+  save();drawQ();$('#clearMsg').textContent='Se borraron tus respuestas y preguntas.';
+  say('Respuestas y preguntas borradas.');$('#ans').focus();
+});
 
 apply();paintMark();drawQ();drawEx(false);
 $$('#idx a')[0].setAttribute('aria-current','true');
