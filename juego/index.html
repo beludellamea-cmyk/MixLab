@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>MIXLAB – Misión Mezclas</title>
+<title>MIXLAB – Nuevas mezclas | Juego interactivo</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap">
 <style>
@@ -256,10 +256,13 @@ body.simple b,body.simple strong,body.simple h1,body.simple h2,body.simple h3{te
 .docbox{margin-top:1em;display:grid;gap:.6em}
 .docbox textarea{font:inherit;width:100%;min-height:9em;box-sizing:border-box;padding:.6em;border-radius:12px;border:3px solid var(--ink);background:var(--panel2);color:var(--text)}
 .modeline{font-size:.95em;margin:.4em 0 0}
+.lesson-link{align-self:flex-start;text-decoration:none;display:inline-flex;align-items:center;font-weight:800;color:var(--text);background:var(--panel2);border:2px solid var(--line);border-radius:12px;padding:.55em .9em;min-height:2.8em}
+.lesson-link:hover{border-color:var(--yellow)}
 </style>
 
 <a class="skip" href="#main">Saltar al contenido</a>
 <div class="wrap">
+  <a class="lesson-link" href="../acompanante/">← Volver al acompañante de clase</a>
   <header class="hud pbox">
     <div class="brand">
       <svg class="mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M19 5h10M21 5v14L9 40q-1.5 4 2.5 4h25q4 0 2.5-4L27 19V5" fill="#fff" fill-opacity=".15" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 33h20l3.500 8q1 2-1.500 2H12q-2.500 0-1.500-2z" fill="#FF4F9A"/><circle cx="20" cy="28" r="2.300" fill="#FFD84A"/><circle cx="27" cy="23" r="1.800" fill="#35E8D8"/></svg>
@@ -337,7 +340,7 @@ body.simple b,body.simple strong,body.simple h1,body.simple h2,body.simple h3{te
       <div class="hero">
         <div class="poster pbox">
           <h2 class="big" id="h0" tabindex="-1">Misión Mezclas</h2>
-          <p class="lead">El laboratorio MIXLAB tiene frascos misteriosos. Mezclá, observá, clasificá y separá para ganar XP y tu credencial de científica o científico.</p>
+          <p class="lead">¡Ahora exploramos mezclas diferentes de las que vimos en clase! Elegí materiales nuevos, mezclá, observá, clasificá y descubrí cómo separarlos para ganar XP.</p>
           <div class="row"><button type="button" class="btn yellow" data-go="1" style="font-size:1.25em">¡Jugar!</button></div>
           <p class="modeline">Pensado para usar con acompañamiento docente. Las opciones de lectura, tamaño, contraste, letra simple y Modo clase están en «Opciones». Si no hay pantallas, las mismas actividades se pueden hacer con materiales reales.</p>
         </div>
@@ -399,8 +402,8 @@ body.simple b,body.simple strong,body.simple h1,body.simple h2,body.simple h3{te
       </div>
       <details>
         <summary>Para saber más: ¿qué es disolverse?</summary>
-        <p>Cuando una sustancia se disuelve, sus partículas, que son diminutas, se separan y se reparten entre las del agua. Por eso no las vemos, pero siguen estando: el agua con sal sigue teniendo sal. Las sustancias que no se disuelven, como la arena, se quedan como partes distintas.</p>
-        <p>El aceite flota porque es menos denso que el agua: en el mismo volumen tiene menos masa.</p>
+        <p>Cuando una sustancia se disuelve, sus partículas se distribuyen en el agua. Por ejemplo, el azúcar disuelta sigue allí aunque no se vean sus cristales. Otros materiales, como la tierra o la harina, quedan suspendidos o se depositan en el fondo.</p>
+        <p>La harina puede enturbiar el agua sin disolverse: esas partículas forman una suspensión. Lo importante no es solo el color, sino observar las fases.</p>
       </details>
       <div class="row"><button type="button" class="btn" data-go="2">Ir a la Misión 2</button></div>
     </section>
@@ -411,7 +414,7 @@ body.simple b,body.simple strong,body.simple h1,body.simple h2,body.simple h3{te
       <div class="qbody panel"></div>
       <details>
         <summary>Para saber más: ¿cómo decidir?</summary>
-        <p>Fijate si podés señalar partes distintas a simple vista. Si todo se ve igual, es homogénea. Si distinguís trozos, capas o granos, es heterogénea. Aunque el aire parezca una sola cosa, es una mezcla de gases: oxígeno, nitrógeno y otros.</p>
+        <p>Fijate si podés señalar partes distintas a simple vista. Si tiene una sola fase, es homogénea. Si presenta más de una fase, es heterogénea. Algunas partículas pequeñas necesitan observación cuidadosa para distinguirse. Aunque el aire parezca una sola cosa, es una mezcla de gases: oxígeno, nitrógeno y otros.</p>
       </details>
       <div class="row"><button type="button" class="btn ghost sm" id="rst2">Volver a empezar esta misión</button></div>
     </section>
@@ -442,9 +445,9 @@ body.simple b,body.simple strong,body.simple h1,body.simple h2,body.simple h3{te
       <h3>Profundizá según tus intereses</h3>
       <div class="deep">
         <details><summary>Cocina</summary>
-          <p>Una vinagreta, hecha con aceite y vinagre, es heterogénea: si la dejás reposar, el aceite sube. La bombilla del mate funciona como un filtro: deja pasar el agua y frena la yerba. Para investigar: ¿qué mezclas de tu cocina son homogéneas y cuáles heterogéneas?</p></details>
+          <p>Una ensalada de frutas tiene partes distinguibles. Una bebida con azúcar completamente disuelta es uniforme. La bombilla del mate funciona como filtro: deja pasar el líquido y retiene gran parte de la yerba. ¿Qué mezclas encontrás en tu cocina?</p></details>
         <details><summary>Naturaleza</summary>
-          <p>El agua del río Bermejo lleva mucha tierra y por eso se ve marrón rojiza: es una mezcla heterogénea. Si dejás un frasco quieto, el barro baja al fondo, igual que la arena de tu experimento. En el mar la sal está disuelta, y en las salinas se la obtiene por evaporación. Para investigar: ¿qué pasa con el agua turbia después de una tormenta?</p></details>
+          <p>El río Bermejo suele transportar sedimentos que dan al agua un color marrón rojizo. Algunas partículas se depositan durante el reposo y otras permanecen suspendidas. ¿Por qué cambia el aspecto del agua después de una lluvia intensa?</p></details>
         <details><summary>Casa y reciclaje</summary>
           <p>En las plantas de reciclaje se usan imanes para separar las latas de acero del resto de los residuos, y tamices para clasificar por tamaño. Para investigar: ¿cómo separarías en tu casa los envases de metal de los de plástico?</p></details>
       </div>
@@ -454,7 +457,7 @@ body.simple b,body.simple strong,body.simple h1,body.simple h2,body.simple h3{te
 
   <div class="vh" id="live" role="status" aria-live="polite" aria-atomic="true"></div>
   <div class="toasts" id="toasts" aria-hidden="true"></div>
-  <footer>MIXLAB – Misión Mezclas es un recurso educativo pensado desde el Diseño Universal para el Aprendizaje: ofrece varias formas de acceder a la información (dibujos, escena 3D, texto y voz), de responder y de seguir profundizando.</footer>
+  <footer>MIXLAB – Nuevas mezclas es una actividad de transferencia con ejemplos distintos de los trabajados en el laboratorio presencial. Es un recurso pensado desde el Diseño Universal para el Aprendizaje: ofrece varias formas de acceder a la información (dibujos, escena 3D, texto y voz), de responder y de seguir profundizando.</footer>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -493,7 +496,7 @@ const SUBIC={
  arena:`<path d="M6 54Q16 22 32 18Q48 22 58 54Z" fill="#D8B67C" ${L}/><circle cx="24" cy="44" r="1.800" fill="#A9864F"/><circle cx="36" cy="38" r="1.800" fill="#A9864F"/><circle cx="42" cy="48" r="1.800" fill="#A9864F"/><circle cx="30" cy="30" r="1.800" fill="#A9864F"/>`,
  aceite:`<path d="M26 8H38V18Q50 24 50 34V54Q50 58 46 58H18Q14 58 14 54V34Q14 24 26 18Z" fill="#F7C531" ${L}/><rect x="25" y="4" width="14" height="8" rx="2" fill="#E4572E" ${L}/><path d="M32 30Q40 40 32 48Q24 40 32 30Z" fill="#fff" fill-opacity=".85" stroke="${INK}" stroke-width="2"/>`,
  piedritas:`<path d="M8 46Q6 34 18 32Q30 32 30 44Q28 54 16 54Q8 54 8 46Z" fill="#8A95A0" ${L}/><path d="M28 50Q28 38 40 36Q52 38 52 48Q50 56 38 56Q28 56 28 50Z" fill="#A5AFB9" ${L}/><path d="M24 30Q24 20 34 18Q44 20 44 28Q42 36 32 36Q24 36 24 30Z" fill="#7C8791" ${L}/>`,
- harina:`<path d="M16 16H48L52 54Q52 58 48 58H16Q12 58 12 54Z" fill="#F6EFD9" ${L}/><path d="M14 16Q32 6 50 16" fill="#E6D9B6" ${L}/><path d="M32 52V32M32 38L26 32M32 38L38 32M32 44L26 38M32 44L38 38" stroke="#C99A3B" stroke-width="2.400" fill="none" stroke-linecap="round"/>,
+ harina:`<path d="M16 16H48L52 54Q52 58 48 58H16Q12 58 12 54Z" fill="#F6EFD9" ${L}/><path d="M14 16Q32 6 50 16" fill="#E6D9B6" ${L}/><path d="M32 52V32M32 38L26 32M32 38L38 32M32 44L26 38M32 44L38 38" stroke="#C99A3B" stroke-width="2.400" fill="none" stroke-linecap="round"/>`,
  colorante:`<path d="M25 6H39V18L49 31V56H15V31L25 18Z" fill="#E44E6E" ${L}/><path d="M23 9H41" stroke="#fff" stroke-width="5"/><path d="M32 31Q42 44 32 53Q22 44 32 31Z" fill="#fff" fill-opacity=".9"/>`,
  tierra:`<path d="M6 53Q17 27 32 21Q49 27 58 53Z" fill="#9B7954" ${L}/><circle cx="23" cy="41" r="3" fill="#735037"/><circle cx="37" cy="34" r="2.5" fill="#735037"/><circle cx="44" cy="45" r="3" fill="#735037"/>`,
  lentejas:`<path d="M8 48Q32 24 56 48Q32 65 8 48Z" fill="#F4ECFF" ${L}/><ellipse cx="22" cy="45" rx="8" ry="5" fill="#98663D" ${L}/><ellipse cx="39" cy="45" rx="8" ry="5" fill="#98663D" ${L}/><ellipse cx="31" cy="53" rx="8" ry="5" fill="#98663D" ${L}/>`
