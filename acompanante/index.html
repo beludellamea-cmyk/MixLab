@@ -195,7 +195,7 @@ footer.cred .body{padding:1rem;display:grid;gap:.7rem}
 <div class="top" id="top" role="region" aria-label="Apoyos de lectura">
   <div class="wrap">
     <div class="row">
-      <button type="button" class="btn main" id="btnAll">▶ Escuchar todo</button>
+      <button type="button" class="btn main" id="btnAll">▶ Escuchar esta parte</button>
       <button type="button" class="btn" id="btnPause" aria-pressed="false">Pausa</button>
       <button type="button" class="btn" id="btnStop">Detener</button>
       <button type="button" class="btn" id="btnSet" aria-expanded="false" aria-controls="panel">Ajustes de lectura</button>
@@ -259,7 +259,7 @@ footer.cred .body{padding:1rem;display:grid;gap:.7rem}
   <!-- 4 -->
   <section class="sec" id="s4" aria-labelledby="t4" data-title="Observamos tres mezclas">
     <header><h2 id="t4"><span class="n" aria-hidden="true">4</span>Observamos tres mezclas</h2></header>
-    <p data-read>Elegí una mezcla. Primero pensá qué creés. Después mostrá las pistas de a una, como en el Anexo B: observo, componentes, fases y tipo.</p>
+    <p data-read>Elegí una mezcla. Observá la imagen y descubrí las pistas de a una.</p>
     <fieldset class="pick" id="pick"><legend>Elegí una mezcla</legend></fieldset>
     <div class="explorer">
       <figure>
@@ -279,7 +279,7 @@ footer.cred .body{padding:1rem;display:grid;gap:.7rem}
   <!-- 5 -->
   <section class="sec" id="s5" aria-labelledby="t5" data-title="Palabras clave">
     <header><h2 id="t5"><span class="n" aria-hidden="true">5</span>Palabras clave</h2></header>
-    <p>Abrí una palabra para ver qué significa. Podés escucharla.</p>
+    <p>Tocá una palabra para descubrir qué significa.</p>
     <div class="gl" id="gl"></div>
   </section>
   <!-- 6 -->
@@ -322,16 +322,16 @@ footer.cred .body{padding:1rem;display:grid;gap:.7rem}
   <section class="game-callout" aria-labelledby="gameTitle">
     <p class="eyebrow">Después de experimentar · Actividad complementaria</p>
     <h2 id="gameTitle">🎮 MIXLAB · Misión Mezclas</h2>
-    <p>Ya observamos agua con sal, arena y aceite. Ahora podemos practicar con un juego de clasificación, recibir explicaciones y resolver desafíos científicos a nuestro ritmo.</p>
+    <p>Después de experimentar, practicá otras mezclas y desafíos con Nova.</p>
     <a class="btn main" href="../juego/">Comenzar el juego de mezclas →</a>
     <p class="note">No reemplaza la experiencia con materiales ni la explicación de la profesora. Podés volver al acompañante desde el juego.</p>
   </section>
 
-  <footer class="cred">
+  <footer class="cred"><details class="more"><summary>Información y créditos del recurso</summary><div class="body">
     <p><b>Créditos.</b> Pictogramas: Sergio Palao. Procedencia: ARASAAC (<a href="https://arasaac.org">arasaac.org</a>). Licencia: CC BY-NC-SA. Titular: Gobierno de Aragón (España). Imágenes de las mezclas: representaciones digitales de apariencia realista, no son fotografías.</p>
     <p><b>Sobre este recurso.</b> Complementa la explicación de la docente y el Anexo A impreso; no los reemplaza. Fue diseñado con criterios de Diseño Universal para el Aprendizaje y de accesibilidad web, pero todavía no se validó con lectores de pantalla ni con estudiantes. Si algo no funciona, avisale a tu docente.</p>
     <p>Necesita conexión a internet para cargar las tipografías. La lectura en voz alta depende de las voces que tenga tu dispositivo.</p>
-  </footer>
+  </div></details></footer>
 </div>
 
 <div id="ruler" hidden aria-hidden="true"></div>
@@ -405,7 +405,7 @@ function readScope(scope,label){
   if(!queue.length){say('No hay texto para leer acá.');return}
   say('Leyendo: '+label+'.');setTimeout(()=>next(my),80);
 }
-$('#btnAll').addEventListener('click',()=>readScope($('#contenido'),'todo el material'));
+$('#btnAll').addEventListener('click',()=>readScope(document.getElementById(curSec()),'esta parte'));
 $('#btnStop').addEventListener('click',()=>stopVoice('Lectura detenida.'));
 $('#btnPause').addEventListener('click',()=>{if(!synth)return;const b=$('#btnPause');try{if(synth.paused){synth.resume();b.setAttribute('aria-pressed','false');b.textContent='Pausa';say('Seguimos.')}else if(synth.speaking){synth.pause();b.setAttribute('aria-pressed','true');b.textContent='Seguir';say('En pausa.')}}catch(e){}});
 
@@ -416,23 +416,23 @@ idx.innerHTML=SECS.map((s,i)=>`<li><a href="#${s.id}" data-sec="${s.id}"><span c
 SECS.forEach((s,i)=>{
   const h=$('header',s),t=document.createElement('div');t.className='tools';
   const hasRead=$$('[data-read]',s).length>0||s.id==='s4'||s.id==='s5';
-  t.innerHTML=(hasRead?`<button type="button" class="btn sm" data-listen="${s.id}">▶ Escuchar esta parte</button>`:'')+`<button type="button" class="btn sm" data-mark="${s.id}" aria-pressed="false">Marcar: la clase va por acá</button>`;
+  t.innerHTML=(hasRead?`<button type="button" class="btn sm" data-listen="${s.id}">▶ Escuchar</button>`:'')+`<button type="button" class="btn sm" data-mark="${s.id}" aria-pressed="false">Marcar aquí</button>`;
   h.appendChild(t);
   const nav=document.createElement('div');nav.className='sec-nav';
-  nav.innerHTML=(i>0?`<button type="button" class="btn sm" data-go="${SECS[i-1].id}">← ${SECS[i-1].dataset.title}</button>`:'<span></span>')+(i<SECS.length-1?`<button type="button" class="btn sm" data-go="${SECS[i+1].id}">${SECS[i+1].dataset.title} →</button>`:'<span></span>');
+  nav.innerHTML=(i>0?`<button type="button" class="btn sm" data-go="${SECS[i-1].id}">← Anterior</button>`:'<span></span>')+(i<SECS.length-1?`<button type="button" class="btn sm" data-go="${SECS[i+1].id}">Siguiente →</button>`:'<span></span>');
   s.appendChild(nav);
 });
 let cur=SECS[0].id;const curSec=()=>cur;
-function showOnly(id){SECS.forEach(s=>s.classList.toggle('cur',s.id===id))}
+function showOnly(id){SECS.forEach(s=>s.classList.toggle('cur',s.id===id));document.body.classList.toggle('show-game',id==='s8');$('#partCount').textContent='Parte '+(SECS.findIndex(s=>s.id===id)+1)+' de '+SECS.length}
 function goSec(id,focus=true){
-  cur=id;if(S.one)showOnly(id);
+  cur=id;$('#partCount').textContent='Parte '+(SECS.findIndex(s=>s.id===id)+1)+' de '+SECS.length;if(S.one)showOnly(id);
   const s=document.getElementById(id);if(!s)return;
   $$('#idx a').forEach(a=>{if(a.dataset.sec===id)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')});
   try{s.scrollIntoView({block:'start',behavior:S.calm?'auto':'smooth'})}catch(e){}
   if(focus){const h=$('h2',s);h.setAttribute('tabindex','-1');h.focus({preventScroll:true})}
 }
 function paintMark(){
-  SECS.forEach(s=>{const on=S.mark===s.id;s.classList.toggle('marked',on);const b=$('[data-mark]',s);b.setAttribute('aria-pressed',on);b.textContent=on?'✓ La clase va por acá':'Marcar: la clase va por acá'});
+  SECS.forEach(s=>{const on=S.mark===s.id;s.classList.toggle('marked',on);const b=$('[data-mark]',s);b.setAttribute('aria-pressed',on);b.textContent=on?'✓ Parte marcada':'Marcar aquí'});
   $('#idx a').forEach(a=>{$('.here',a).hidden=a.dataset.sec!==S.mark});
   $('#goMark').hidden=!S.mark;
 }
@@ -441,7 +441,7 @@ document.addEventListener('click',e=>{
   const l=e.target.closest('[data-listen]');if(l){const s=document.getElementById(l.dataset.listen);readScope(s,s.dataset.title);return}
   const m=e.target.closest('[data-mark]');if(m){S.mark=S.mark===m.dataset.mark?'':m.dataset.mark;paintMark();save();say(S.mark?'Marcaste dónde va la clase.':'Quitaste la marca.');return}
   const g=e.target.closest('[data-go]');if(g){goSec(g.dataset.go);return}
-  const a=e.target.closest('#idx a');if(a){e.preventDefault();goSec(a.dataset.sec)}
+  const a=e.target.closest('#idx a');if(a){e.preventDefault();goSec(a.dataset.sec);const d=$('.parts-menu');if(d)d.open=false}
 });
 try{const io=new IntersectionObserver(es=>{if(S.one)return;es.forEach(en=>{if(en.isIntersecting){cur=en.target.id;$$('#idx a').forEach(a=>{if(a.dataset.sec===cur)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')})}})},{rootMargin:'-30% 0px -60% 0px'});SECS.forEach(s=>io.observe(s))}catch(e){}
 
