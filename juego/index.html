@@ -493,7 +493,10 @@ const SUBIC={
  arena:`<path d="M6 54Q16 22 32 18Q48 22 58 54Z" fill="#D8B67C" ${L}/><circle cx="24" cy="44" r="1.800" fill="#A9864F"/><circle cx="36" cy="38" r="1.800" fill="#A9864F"/><circle cx="42" cy="48" r="1.800" fill="#A9864F"/><circle cx="30" cy="30" r="1.800" fill="#A9864F"/>`,
  aceite:`<path d="M26 8H38V18Q50 24 50 34V54Q50 58 46 58H18Q14 58 14 54V34Q14 24 26 18Z" fill="#F7C531" ${L}/><rect x="25" y="4" width="14" height="8" rx="2" fill="#E4572E" ${L}/><path d="M32 30Q40 40 32 48Q24 40 32 30Z" fill="#fff" fill-opacity=".85" stroke="${INK}" stroke-width="2"/>`,
  piedritas:`<path d="M8 46Q6 34 18 32Q30 32 30 44Q28 54 16 54Q8 54 8 46Z" fill="#8A95A0" ${L}/><path d="M28 50Q28 38 40 36Q52 38 52 48Q50 56 38 56Q28 56 28 50Z" fill="#A5AFB9" ${L}/><path d="M24 30Q24 20 34 18Q44 20 44 28Q42 36 32 36Q24 36 24 30Z" fill="#7C8791" ${L}/>`,
- harina:`<path d="M16 16H48L52 54Q52 58 48 58H16Q12 58 12 54Z" fill="#F6EFD9" ${L}/><path d="M14 16Q32 6 50 16" fill="#E6D9B6" ${L}/><path d="M32 52V32M32 38L26 32M32 38L38 32M32 44L26 38M32 44L38 38" stroke="#C99A3B" stroke-width="2.400" fill="none" stroke-linecap="round"/>`
+ harina:`<path d="M16 16H48L52 54Q52 58 48 58H16Q12 58 12 54Z" fill="#F6EFD9" ${L}/><path d="M14 16Q32 6 50 16" fill="#E6D9B6" ${L}/><path d="M32 52V32M32 38L26 32M32 38L38 32M32 44L26 38M32 44L38 38" stroke="#C99A3B" stroke-width="2.400" fill="none" stroke-linecap="round"/>,
+ colorante:`<path d="M25 6H39V18L49 31V56H15V31L25 18Z" fill="#E44E6E" ${L}/><path d="M23 9H41" stroke="#fff" stroke-width="5"/><path d="M32 31Q42 44 32 53Q22 44 32 31Z" fill="#fff" fill-opacity=".9"/>`,
+ tierra:`<path d="M6 53Q17 27 32 21Q49 27 58 53Z" fill="#9B7954" ${L}/><circle cx="23" cy="41" r="3" fill="#735037"/><circle cx="37" cy="34" r="2.5" fill="#735037"/><circle cx="44" cy="45" r="3" fill="#735037"/>`,
+ lentejas:`<path d="M8 48Q32 24 56 48Q32 65 8 48Z" fill="#F4ECFF" ${L}/><ellipse cx="22" cy="45" rx="8" ry="5" fill="#98663D" ${L}/><ellipse cx="39" cy="45" rx="8" ry="5" fill="#98663D" ${L}/><ellipse cx="31" cy="53" rx="8" ry="5" fill="#98663D" ${L}/>`
 };
 const subIcon=id=>svg('0 0 64 64',SUBIC[id]);
 /* Métodos de separación: íconos 64x64 */
@@ -528,6 +531,12 @@ const ART={
  jugo:()=>svg('0 0 200 140',shadow+glass(54,28,92,94,[{f:.88,c:'#FF9F2E'}])+`<path d="M110 8L100 80" stroke="${INK}" stroke-width="8" stroke-linecap="round"/><path d="M110 8L100 80" stroke="#FF4F9A" stroke-width="4" stroke-linecap="round"/><circle cx="150" cy="40" r="16" fill="#FFB23D" ${L}/><path d="M150 40V25M150 40L137 48M150 40L163 48" stroke="#fff" stroke-width="2"/>`),
  arrozPorotos:()=>svg('0 0 200 140',shadow+`<ellipse cx="100" cy="82" rx="82" ry="38" fill="#F4ECFF" ${L}/><ellipse cx="100" cy="82" rx="60" ry="26" fill="#E4DAFF" stroke="${INK}" stroke-width="2"/>`+Array.from({length:30},(_,i)=>{const a=R(i*4.1)*6.28,r=Math.sqrt(R(i*2.3+1))*50,x=100+Math.cos(a)*r,y=82+Math.sin(a)*r*.42;return `<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="5" ry="2.200" fill="#fff" stroke="${INK}" stroke-width="1" transform="rotate(${Math.round(R(i)*180)} ${x.toFixed(1)} ${y.toFixed(1)})"/>`}).join('')+Array.from({length:9},(_,i)=>{const a=R(i*6.7+9)*6.28,r=Math.sqrt(R(i*3.3+4))*46,x=100+Math.cos(a)*r,y=82+Math.sin(a)*r*.42;return `<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="6" ry="4" fill="#9C2F3A" stroke="${INK}" stroke-width="1.500" transform="rotate(${Math.round(R(i+3)*180)} ${x.toFixed(1)} ${y.toFixed(1)})"/>`}).join('')),
  aire:()=>svg('0 0 200 140',`<rect x="14" y="8" width="172" height="118" rx="18" fill="#7FD3FF" ${L}/><path d="M36 58Q36 42 52 42Q58 30 74 36Q92 32 94 50Q108 52 106 66H42Q32 64 36 58Z" fill="#fff" ${L}/><path d="M112 40Q126 34 134 42Q148 38 150 50Q160 52 158 60H112Q106 52 112 40Z" fill="#fff" ${L} opacity=".95"/><path d="M30 100Q60 88 90 100T150 100T182 96" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" class="bob"/><path d="M40 114Q70 104 100 114T160 112" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".8"/><circle cx="130" cy="84" r="5" fill="#FF4F9A" ${L}/><circle cx="141" cy="84" r="5" fill="#FF4F9A" ${L}/><circle cx="60" cy="80" r="5" fill="#2E6BFF" ${L}/><circle cx="72" cy="76" r="5" fill="#2E6BFF" ${L}/>`),
+
+ aguaLentejas:()=>svg('0 0 200 140',shadow+glass(58,18,84,102,[{f:.85,c:'#8EDCF2'}],artDots(18,68,132,102,116,4,6,'#98663D',91,'#543B29'))),
+ aguaHarina:()=>svg('0 0 200 140',shadow+glass(58,18,84,102,[{f:.85,c:'#EEE9E0'}],artDots(34,68,132,84,116,1.2,2.5,'#D7CBBE',42))),
+ sepTierra:()=>svg('0 0 200 140',shadow+glass(54,18,92,102,[{f:.82,c:'#AF977A'}],artDots(45,64,136,84,116,1.1,3,'#7B543D',51))),
+ sepAzucar:()=>svg('0 0 200 140',shadow+glass(40,22,82,98,[{f:.8,c:'#8EDCF2'}])+star(146,29,8)+`<g transform="translate(124 48) scale(1.05)">${SUBIC.azucar}</g>`),
+ sepLentejas:()=>svg('0 0 200 140',shadow+glass(54,18,92,102,[{f:.82,c:'#8EDCF2'}],artDots(18,64,136,99,117,4,6,'#98663D',92,'#543B29'))),
  /* desafíos */
  sepArena:()=>svg('0 0 200 140',shadow+glass(54,18,92,102,[{f:.84,c:'#CDBA8E'}],artDots(40,60,140,28,112,1.500,3,'#A98A55',5))),
  sepSal:()=>svg('0 0 200 140',shadow+glass(36,22,84,98,[{f:.8,c:'#8EDCF2'}],artDots(26,44,112,34,114,1,1.800,'#fff',8))+`<g transform="translate(118 44) scale(1.250)">${SUBIC.sal}</g>`+star(172,34,6)),
@@ -826,13 +835,13 @@ const GL=(function(){
 
   // Sustancias
   const CFG={
-    sal:{n:48,geo:'box',size:.075,color:0xffffff,mode:'dissolve',drag:.9},
     azucar:{n:36,geo:'box',size:.1,color:0xfff3cf,mode:'dissolve',drag:.9},
-    jugo:{n:42,geo:'sph',size:.06,color:0xff8f1f,mode:'dissolve',drag:.6,w2:0xffa23a,o2:.8,w3:0xffa94d,o3:.85},
-    arena:{n:120,geo:'sph',size:.05,color:0xcaa66b,mode:'sediment',drag:1.3,w2:0xc9b48a,o2:.85},
     piedritas:{n:9,geo:'dod',size:.17,color:0x8a95a0,mode:'rest',drag:2.4},
+    jugo:{n:42,geo:'sph',size:.06,color:0xff8f1f,mode:'dissolve',drag:.6,w2:0xffa23a,o2:.8,w3:0xffa94d,o3:.85},
+    tierra:{n:120,geo:'sph',size:.05,color:0x8a6549,mode:'sediment',drag:1.3,w2:0xaf8d67,o2:.8,w3:0xb9a080,o3:.7},
+    colorante:{n:30,geo:'sph',size:.06,color:0xe44e6e,mode:'dissolve',drag:.8,w2:0xe78098,o2:.78,w3:0xea819c,o3:.82},
     harina:{n:90,geo:'sph',size:.045,color:0xf5f1e6,mode:'susp',drag:.35,w2:0xf4f1ea,o2:.95,w3:0xf0ece3,o3:.88},
-    aceite:{n:38,geo:'sph',size:.09,color:0xf7c531,mode:'oil',drag:1}
+    lentejas:{n:16,geo:'dod',size:.16,color:0x98663d,mode:'rest',drag:2.3}
   };
   const GEO={box:new T.BoxGeometry(1,1,1),sph:new T.SphereGeometry(1,10,8),dod:new T.DodecahedronGeometry(1)};
   const mats={};Object.keys(CFG).forEach(k=>{mats[k]=tm(CFG[k].color)});
