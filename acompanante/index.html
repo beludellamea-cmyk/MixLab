@@ -514,7 +514,7 @@ const GL=[
  ['observar','Observar','Mirar con atención para distinguir componentes y fases.'],
  ['mezclar','Mezclar','Combinar materiales. En el experimento, se revuelve y se deja reposar.']
 ];
-const renderWord=g=>`<details class="card"><summary>${g[0]?`<img class="pic sm" data-img="${g[0]}" alt="">`:''}${g[1]}</summary><div class="body"><p data-read data-say="${g[1]}. ${g[2]}">${g[2]}</p><div><button type="button" class="btn sm" data-say-btn>▶ Escuchar</button></div></div></details>`);
+const renderWord=g=>`<details class="card"><summary>${g[0]?`<img class="pic sm" data-img="${g[0]}" alt="">`:''}${g[1]}</summary><div class="body"><p data-read data-say="${g[1]}. ${g[2]}">${g[2]}</p><div><button type="button" class="btn sm" data-say-btn>▶ Escuchar</button></div></div></details>`;
 $('#gl').innerHTML=GL.slice(0,5).map(renderWord).join('')+'<details class="more vocab-more"><summary>Ver más palabras</summary><div class="gl">'+GL.slice(5).map(renderWord).join('')+'</div></details>';
 $$('#gl img[data-img]').forEach(i=>{i.src=IMG[i.dataset.img]});
 $('#gl').addEventListener('click',e=>{const b=e.target.closest('[data-say-btn]');if(!b)return;const p=$('[data-read]',b.closest('.body'));readScope(p.parentElement,p.dataset.say.split('.')[0])});
