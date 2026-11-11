@@ -638,13 +638,6 @@ function toast(t,cls=''){
 
 /* ====================== DATOS ====================== */
 let SUBS=[
- {id:'sal',name:'Sal fina',form:'sólido',homog:true,
-  add:'Agregaste sal fina. Los granitos blancos caen al fondo del vaso y se acumulan ahí.',
-  stir:'Revolviste con la cuchara. Los granitos se achican cada vez más y desaparecen. El agua sigue transparente.',
-  wait:'Esperaste un momento. No se ve ningún grano de sal y todo el líquido se ve igual: una sola parte.',
-  why:'La sal se disolvió: sus partículas se repartieron entre las del agua. Es una mezcla homogénea.',
-  seen:'Una sola parte, agua transparente',
-  fx:{1:{dots:[{n:28,x0:100,x1:240,y0:290,y1:304,r0:1.8,r1:3,fill:'#fff',stroke:'#5C7284',seed:1}]},2:{dots:[{n:14,x0:104,x1:236,y0:180,y1:300,r0:.9,r1:1.7,fill:'#fff',stroke:'#5C7284',seed:2,op:.7}]},3:{}}},
  {id:'azucar',name:'Azúcar',form:'sólido',homog:true,
   add:'Agregaste azúcar. Los cristalitos caen y quedan en el fondo del vaso.',
   stir:'Revolviste. Los cristalitos se van achicando hasta desaparecer. El agua se mantiene transparente.',
@@ -652,27 +645,6 @@ let SUBS=[
   why:'El azúcar se disolvió y quedó repartida entre las partículas del agua. Es una mezcla homogénea.',
   seen:'Una sola parte, agua transparente',
   fx:{1:{dots:[{n:24,x0:100,x1:240,y0:288,y1:304,r0:2.2,r1:3.5,fill:'#fff',stroke:'#8F7A4E',seed:11}]},2:{dots:[{n:12,x0:104,x1:236,y0:190,y1:300,r0:1,r1:1.9,fill:'#fff',stroke:'#8F7A4E',seed:12,op:.7}]},3:{}}},
- {id:'jugo',name:'Jugo en polvo',form:'sólido',homog:true,
-  add:'Agregaste jugo en polvo de naranja. Se forma una mancha naranja arriba y algunos granitos caen.',
-  stir:'Revolviste. El color naranja se reparte por todo el vaso.',
-  wait:'Esperaste un momento. El líquido es naranja parejo en todas partes y no se ven partes distintas.',
-  why:'El polvo se disolvió y se repartió de forma pareja. Cambió el color, pero se ve una sola parte: es homogénea.',
-  seen:'Una sola parte, naranja pareja',
-  fx:{1:{dots:[{n:18,x0:100,x1:240,y0:132,y1:150,r0:1.5,r1:2.6,fill:'#F28C28',seed:21},{n:10,x0:100,x1:240,y0:200,y1:300,r0:1.3,r1:2.2,fill:'#F28C28',seed:22}]},2:{water:['#F5A14A',.55],dots:[{n:8,x0:104,x1:236,y0:200,y1:300,r0:1,r1:1.6,fill:'#E27B14',seed:23,op:.6}]},3:{water:['#F5A14A',.7]}}},
- {id:'arena',name:'Arena',form:'sólido',homog:false,
-  add:'Agregaste arena. Los granos caen rápido y forman una capa en el fondo.',
-  stir:'Revolviste. El agua se pone turbia y se ven granitos girando por todo el vaso.',
-  wait:'Esperaste un momento. La arena volvió a caer al fondo y el agua de arriba quedó transparente. Se ven dos partes: arena y agua.',
-  why:'La arena no se disuelve y se distingue del agua. Hay dos partes visibles: es una mezcla heterogénea.',
-  seen:'Dos partes: arena abajo, agua arriba',
-  fx:{1:{dots:[{n:70,x0:98,x1:242,y0:270,y1:304,r0:1.2,r1:2.3,fill:'#C9A66B',seed:31}]},2:{water:['#C9B48A',.65],dots:[{n:80,x0:100,x1:240,y0:150,y1:304,r0:1.1,r1:2.2,fill:'#C9A66B',seed:32}]},3:{dots:[{n:70,x0:98,x1:242,y0:270,y1:304,r0:1.2,r1:2.3,fill:'#C9A66B',seed:31}]}}},
- {id:'aceite',name:'Aceite',form:'líquido',homog:false,
-  add:'Agregaste aceite. No se hunde: forma una capa amarilla que flota arriba del agua.',
-  stir:'Revolviste. El aceite se parte en gotitas amarillas que se reparten por el agua.',
-  wait:'Esperaste un momento. Las gotitas se juntaron y volvieron a formar una capa arriba. Se ven dos capas bien separadas.',
-  why:'El aceite no se mezcla con el agua y flota porque es menos denso. Se distinguen dos partes: es heterogénea.',
-  seen:'Dos capas: aceite arriba, agua abajo',
-  fx:{1:{rects:'<rect x="86" y="110" width="168" height="21" fill="#F2C230" opacity=".92"/>'},2:{rects:'<rect x="86" y="122" width="168" height="9" fill="#F2C230" opacity=".92"/>',dots:[{n:34,x0:102,x1:238,y0:140,y1:298,r0:2,r1:5.2,fill:'#F2C230',seed:41,op:.9}]},3:{rects:'<rect x="86" y="110" width="168" height="21" fill="#F2C230" opacity=".92"/>'}}},
  {id:'piedritas',name:'Piedritas',form:'sólido',homog:false,
   add:'Agregaste piedritas. Se hunden enseguida y quedan en el fondo.',
   stir:'Revolviste. Las piedritas se mueven un poco, pero no cambian.',
@@ -680,23 +652,51 @@ let SUBS=[
   why:'Las piedritas no se disuelven ni se rompen. Se distinguen del agua: es una mezcla heterogénea.',
   seen:'Dos partes: piedritas abajo, agua arriba',
   fx:{1:{dots:[{n:8,x0:104,x1:236,y0:284,y1:298,r0:4,r1:7,fill:'#7C8791',stroke:'#3F4A54',seed:51}]},2:{dots:[{n:8,x0:104,x1:236,y0:278,y1:298,r0:4,r1:7,fill:'#7C8791',stroke:'#3F4A54',seed:52}]},3:{dots:[{n:8,x0:104,x1:236,y0:284,y1:298,r0:4,r1:7,fill:'#7C8791',stroke:'#3F4A54',seed:51}]}}},
+ {id:'jugo',name:'Jugo en polvo',form:'sólido',homog:true,
+  add:'Agregaste jugo en polvo de naranja. Se forma una mancha naranja arriba y algunos granitos caen.',
+  stir:'Revolviste. El color naranja se reparte por todo el vaso.',
+  wait:'Esperaste un momento. El líquido es naranja parejo en todas partes y no se ven partes distintas.',
+  why:'El polvo se disolvió y se repartió de forma pareja. Cambió el color, pero se ve una sola parte: es homogénea.',
+  seen:'Una sola parte, naranja pareja',
+  fx:{1:{dots:[{n:18,x0:100,x1:240,y0:132,y1:150,r0:1.5,r1:2.6,fill:'#F28C28',seed:21},{n:10,x0:100,x1:240,y0:200,y1:300,r0:1.3,r1:2.2,fill:'#F28C28',seed:22}]},2:{water:['#F5A14A',.55],dots:[{n:8,x0:104,x1:236,y0:200,y1:300,r0:1,r1:1.6,fill:'#E27B14',seed:23,op:.6}]},3:{water:['#F5A14A',.7]}}},
+ {id:'tierra',name:'Tierra',form:'sólido',homog:false,
+  add:'Agregaste tierra. Se ven partículas y el agua comienza a enturbiarse.',
+  stir:'Revolviste. El agua se vuelve marrón y turbia.',
+  wait:'Dejaste reposar. Parte de la tierra se deposita en el fondo y otra parte puede seguir suspendida.',
+  why:'La tierra no se disuelve por completo: quedan partículas sólidas en el agua. Es una mezcla heterogénea.',
+  seen:'Agua turbia con partículas y sedimento',
+  fx:{1:{dots:[{n:70,x0:98,x1:242,y0:270,y1:304,r0:1.3,r1:2.6,fill:'#8A6549',seed:81}]},2:{water:['#AF8D67',.78],dots:[{n:80,x0:100,x1:240,y0:151,y1:304,r0:.8,r1:2,fill:'#785337',seed:82}]},3:{water:['#B9A080',.62],dots:[{n:60,x0:98,x1:242,y0:278,y1:304,r0:1.2,r1:2.4,fill:'#785337',seed:83},{n:12,x0:104,x1:236,y0:160,y1:255,r0:.6,r1:1.1,fill:'#785337',seed:84,op:.55}]}}},
+ {id:'colorante',name:'Colorante alimentario',form:'líquido',homog:true,
+  add:'Agregaste unas gotas de colorante alimentario. Se forma una nube rojiza en el agua.',
+  stir:'Revolviste. El color se distribuye por todo el recipiente.',
+  wait:'Esperaste un momento. El agua tiene un tono rojizo uniforme: no se distinguen capas.',
+  why:'El colorante se dispersó de manera uniforme. En esta cantidad se observa una sola fase: es una mezcla homogénea.',
+  seen:'Una fase: líquido rojizo uniforme',
+  fx:{1:{dots:[{n:20,x0:122,x1:219,y0:135,y1:235,r0:1.5,r1:3,fill:'#E44E6E',seed:71}]},2:{water:['#E78098',.78],dots:[{n:12,x0:102,x1:238,y0:150,y1:300,r0:.8,r1:1.6,fill:'#D74768',seed:72,op:.5}]},3:{water:['#EA819C',.82]}}},
  {id:'harina',name:'Harina',form:'sólido',homog:false,
   add:'Agregaste harina. Un polvo blanco queda flotando arriba y una parte empieza a hundirse.',
   stir:'Revolviste. El agua se pone blanca y turbia, como leche aguada.',
   wait:'Esperaste un momento. El agua sigue turbia y en el fondo se junta un poco de polvo blanco. No se ve transparente ni parejo.',
   why:'La harina no se disuelve del todo: quedan partículas flotando y otras que se depositan. Se notan partes distintas: es heterogénea.',
   seen:'Agua turbia y polvo en el fondo',
-  fx:{1:{dots:[{n:26,x0:100,x1:240,y0:126,y1:136,r0:1.3,r1:2.4,fill:'#fff',stroke:'#7D8E9B',seed:61},{n:10,x0:104,x1:236,y0:150,y1:250,r0:1.2,r1:2,fill:'#fff',stroke:'#7D8E9B',seed:62}]},2:{water:['#F4F1EA',.88],dots:[{n:55,x0:100,x1:240,y0:140,y1:300,r0:1,r1:2,fill:'#fff',stroke:'#7D8E9B',seed:63,op:.8}]},3:{water:['#F4F1EA',.55],dots:[{n:34,x0:98,x1:242,y0:284,y1:304,r0:1.2,r1:2.3,fill:'#fff',stroke:'#7D8E9B',seed:64},{n:12,x0:104,x1:236,y0:150,y1:270,r0:.9,r1:1.6,fill:'#fff',seed:65,op:.6}]}}}
+  fx:{1:{dots:[{n:26,x0:100,x1:240,y0:126,y1:136,r0:1.3,r1:2.4,fill:'#fff',stroke:'#7D8E9B',seed:61},{n:10,x0:104,x1:236,y0:150,y1:250,r0:1.2,r1:2,fill:'#fff',stroke:'#7D8E9B',seed:62}]},2:{water:['#F4F1EA',.88],dots:[{n:55,x0:100,x1:240,y0:140,y1:300,r0:1,r1:2,fill:'#fff',stroke:'#7D8E9B',seed:63,op:.8}]},3:{water:['#F4F1EA',.55],dots:[{n:34,x0:98,x1:242,y0:284,y1:304,r0:1.2,r1:2.3,fill:'#fff',stroke:'#7D8E9B',seed:64},{n:12,x0:104,x1:236,y0:150,y1:270,r0:.9,r1:1.6,fill:'#fff',seed:65,op:.6}]}}},
+ {id:'lentejas',name:'Lentejas secas',form:'sólido',homog:false,
+  add:'Agregaste lentejas secas. Podés distinguir los granos y el agua.',
+  stir:'Revolviste. Las lentejas se mueven, pero siguen siendo visibles.',
+  wait:'Dejaste reposar. Las lentejas quedan en el fondo del recipiente.',
+  why:'Las lentejas no se disuelven durante esta experiencia. Es una mezcla heterogénea.',
+  seen:'Dos partes visibles: lentejas y agua',
+  fx:{1:{dots:[{n:14,x0:103,x1:237,y0:277,y1:301,r0:4,r1:6,fill:'#98663D',stroke:'#543B29',seed:91}]},2:{dots:[{n:14,x0:103,x1:237,y0:170,y1:302,r0:4,r1:6,fill:'#98663D',stroke:'#543B29',seed:92}]},3:{dots:[{n:14,x0:103,x1:237,y0:277,y1:301,r0:4,r1:6,fill:'#98663D',stroke:'#543B29',seed:91}]}}}
 ];
 let CLS=[
- {name:'Agua con azúcar disuelta',desc:'Un vaso de agua con una cucharada de azúcar bien revuelta. No se ven los cristales.',art:'azucarAgua',ok:['hom'],hint:'¿Podés señalar algún cristal de azúcar en el vaso?',why:'El azúcar se disolvió y se ve una sola parte. Es homogénea.'},
- {name:'Ensalada de frutas',desc:'Un bowl con trozos de manzana, banana, naranja, uvas y kiwi.',art:'frutas',ok:['het'],hint:'¿Podés distinguir cada fruta a simple vista?',why:'Se distingue cada trozo de fruta. Hay varias partes: es heterogénea.'},
- {name:'Agua con aceite',desc:'Un vaso donde una capa amarilla flota sobre el agua.',art:'aguaAceite',ok:['het'],hint:'Contá cuántas capas ves.',why:'El aceite y el agua no se mezclan y forman dos capas. Es heterogénea.'},
- {name:'Té con azúcar',desc:'Té caliente, colado, con azúcar disuelta. No hay hojitas ni cristales.',art:'te',ok:['hom'],hint:'Si se ve todo igual en la taza, ¿cuántas partes hay?',why:'Todo el líquido se ve igual: una sola parte. Es homogénea.'},
- {name:'Arena con agua',desc:'Un vaso con agua y arena que se juntó en el fondo.',art:'arenaAgua',ok:['het'],hint:'¿La arena se disuelve o se queda como parte aparte?',why:'La arena se distingue del agua. Es heterogénea.'},
- {name:'Agua con jugo en polvo',desc:'Un vaso de jugo de naranja preparado y bien revuelto, sin grumos.',art:'jugo',ok:['hom'],hint:'Pensá en el vaso de tu experimento con jugo en polvo.',why:'El polvo se disolvió y el color es parejo. Es homogénea.'},
- {name:'Arroz con porotos',desc:'Un plato con granos de arroz y porotos mezclados.',art:'arrozPorotos',ok:['het'],hint:'¿Podés separar los granos con la mano?',why:'Se distingue cada tipo de grano. Es heterogénea.'},
- {name:'Aire limpio',desc:'El aire está formado por gases como el oxígeno y el nitrógeno. Sin humo ni polvo, no se distingue ninguna parte.',art:'aire',ok:['hom'],hint:'Si no ves partes distintas, ¿qué tipo de mezcla es?',why:'Aunque tenga varios gases, no se distinguen partes. Es homogénea.'}
+ {name:'Agua con azúcar disuelta',desc:'Un vaso de agua con azúcar que se disolvió por completo.',art:'azucarAgua',ok:['hom'],hint:'¿Podés identificar cristales de azúcar?',why:'El azúcar está disuelta: se ve una sola fase. Es homogénea.'},
+ {name:'Ensalada de frutas',desc:'Un recipiente con trozos de banana, manzana, naranja y uvas.',art:'frutas',ok:['het'],hint:'¿Podés reconocer distintas frutas?',why:'Se distinguen los trozos de frutas. Es heterogénea.'},
+ {name:'Agua con lentejas',desc:'Un recipiente con granos de lentejas visibles en el fondo.',art:'aguaLentejas',ok:['het'],hint:'¿Podés distinguir los granos del agua?',why:'Se distinguen las lentejas y el agua. Es heterogénea.'},
+ {name:'Té colado con azúcar disuelta',desc:'Un té colado sin hojas visibles, con azúcar disuelta.',art:'te',ok:['hom'],hint:'¿Se ven hojas o granos de azúcar?',why:'Se observa una fase uniforme. Es homogénea.'},
+ {name:'Agua con harina',desc:'Un vaso con harina revuelta en agua: el líquido es turbio y puede quedar sedimento.',art:'aguaHarina',ok:['het'],hint:'¿La harina se disolvió o quedan partículas?',why:'Hay partículas de harina suspendidas. Es heterogénea, aunque algunas no se distingan a simple vista.'},
+ {name:'Jugo instantáneo bien preparado',desc:'Una bebida hecha con jugo en polvo soluble, sin grumos visibles.',art:'jugo',ok:['hom'],hint:'¿El líquido tiene un aspecto parejo?',why:'Los ingredientes solubles se disolvieron y se observa una sola fase. Es homogénea.'},
+ {name:'Arroz con porotos',desc:'Un plato con granos de arroz y porotos.',art:'arrozPorotos',ok:['het'],hint:'¿Podés distinguir los diferentes granos?',why:'Se distinguen arroz y porotos. Es heterogénea.'},
+ {name:'Aire limpio',desc:'Una mezcla de gases como nitrógeno y oxígeno, sin humo ni polvo.',art:'aire',ok:['hom'],hint:'¿Los gases forman capas visibles?',why:'Los gases forman una fase uniforme. Es homogénea.'}
 ];
 const ICON_HOM=svg('0 0 64 64',`<path d="M16 8H48L45 54Q45 58 41 58H23Q19 58 19 54Z" fill="#8EDCF2" ${L}/><path d="M22 14V40" stroke="#fff" stroke-width="3.500" stroke-linecap="round" opacity=".8"/>`);
 const ICON_HET=svg('0 0 64 64',`<path d="M16 8H48L45 54Q45 58 41 58H23Q19 58 19 54Z" fill="#8EDCF2" ${L}/><path d="M17.500 30H46.500L45 54Q45 58 41 58H23Q19 58 19 54Z" fill="#F7C531" ${L}/><circle cx="28" cy="46" r="2.600" fill="#D8B67C" stroke="${INK}" stroke-width="1.200"/><circle cx="37" cy="50" r="2.600" fill="#D8B67C" stroke="${INK}" stroke-width="1.200"/><circle cx="32" cy="18" r="2.200" fill="#fff" fill-opacity=".8"/>`);
@@ -709,11 +709,11 @@ const METHODS=[
  {id:'tamizacion',label:'Tamización',sub:'Se pasa por un colador o tamiz: lo chico pasa y lo grande queda.',use:'sirve para separar sólidos de distinto tamaño'}
 ].map(m=>Object.assign(m,{icon:methIcon(m.id)}));
 let CH=[
- {name:'Agua con arena',desc:'Mezclaste arena y agua en un balde. Querés quedarte con el agua, sin arena.',art:'sepArena',ok:['filtracion','decantacion'],hint:'La arena no se disuelve y es sólida. ¿Qué la puede frenar o dejar que se hunda?',why:'La filtración separa la arena enseguida. Si esperás, la arena se hunde y también podés volcar el agua de arriba: eso es decantación. Las dos sirven.'},
- {name:'Agua con sal',desc:'Disolviste sal en agua. Querés recuperar la sal.',art:'sepSal',ok:['evaporacion'],hint:'La sal está disuelta, así que ningún filtro la frena. ¿Qué se va si calentás el agua?',why:'Al evaporarse el agua, la sal queda. Así se obtiene sal en las salinas.'},
- {name:'Agua y aceite',desc:'Un frasco tiene una capa de aceite flotando sobre el agua. Querés separar los dos líquidos.',art:'sepAceite',ok:['decantacion'],hint:'El aceite flota. ¿Cómo sacás la capa de arriba?',why:'Con la decantación se saca el líquido de arriba o se abre una llave por abajo. Funciona porque el aceite es menos denso.'},
- {name:'Clips de acero y arroz',desc:'Se cayó una caja de clips de acero en un pote de arroz. Querés sacarlos todos.',art:'sepClips',ok:['imantacion'],hint:'Los clips son de acero. ¿Qué objeto los atrae?',why:'El imán atrae el acero y deja el arroz. Es la imantación.'},
- {name:'Piedritas y harina',desc:'En un tazón hay harina mezclada con piedritas. Querés quedarte con la harina.',art:'sepPiedritas',ok:['tamizacion'],hint:'La harina es muy fina y las piedritas, grandes. ¿Qué deja pasar solo lo chico?',why:'En un colador o tamiz pasa la harina y quedan las piedritas. Es la tamización.'}
+ {name:'Agua con tierra',desc:'Un frasco tiene agua turbia con tierra. Querés retirar la mayor parte de las partículas sólidas.',art:'sepTierra',ok:['filtracion','decantacion'],hint:'¿Podés retener las partículas o dejarlas sedimentar?',why:'La filtración puede retener partículas sólidas y la decantación permite retirar el agua superior después del reposo. Eso no garantiza que sea potable.'},
+ {name:'Agua con azúcar',desc:'Disolviste azúcar en agua y querés recuperar el azúcar.',art:'sepAzucar',ok:['evaporacion'],hint:'El azúcar disuelta atraviesa un filtro. ¿Qué sucede si el agua se evapora lentamente?',why:'La evaporación elimina el agua y permite recuperar el azúcar. No hace falta realizar calentamientos: cualquier uso del calor requiere supervisión docente.'},
+ {name:'Agua con lentejas',desc:'Un recipiente contiene agua y lentejas. Querés quedarte con los granos.',art:'sepLentejas',ok:['filtracion'],hint:'¿Qué utensilio deja pasar el agua y retiene las lentejas?',why:'Un colador funciona como filtro: el agua pasa y las lentejas quedan retenidas. Es filtración.'},
+ {name:'Clips de acero y arroz',desc:'Se cayeron clips de acero en un recipiente de arroz. Querés separarlos.',art:'sepClips',ok:['imantacion'],hint:'¿Qué objeto atrae el acero?',why:'Un imán atrae los clips y deja el arroz. Es imantación.'},
+ {name:'Piedritas y harina',desc:'Mezclaste harina y piedritas y querés recuperar la harina.',art:'sepPiedritas',ok:['tamizacion'],hint:'¿Qué utensilio separa los sólidos según su tamaño?',why:'Con un tamiz pasa la harina y quedan las piedritas. Es tamización.'}
 ];
 if(CLASE){SUBS=SUBS.slice(0,4);CLS=CLS.slice(0,4);CH=CH.slice(0,2)}
 const MAXP={exp:SUBS.length*10,cls:CLS.length*10,ch:CH.length*10};
