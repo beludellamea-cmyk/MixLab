@@ -188,7 +188,7 @@ body.one .game-callout{display:none}
 body.one.show-game .game-callout{display:grid}
 footer.cred .body{padding:1rem;display:grid;gap:.7rem}
 @media(max-width:40rem){.top .row{display:grid;grid-template-columns:1fr 1fr}.top .row .btn{justify-content:center}.sec>header{display:grid}.sec-nav{display:grid;grid-template-columns:1fr 1fr}.sec-nav button{font-size:.95rem;min-width:0}}
-</style>
+.vocab-more{grid-column:1/-1}.vocab-more>.gl{padding:1rem}.notes-more .body{padding-top:1rem}</style>
 </head>
 <body>
 <a class="skip" href="#contenido">Ir al contenido</a>
@@ -289,13 +289,14 @@ footer.cred .body{padding:1rem;display:grid;gap:.7rem}
       <ol class="qs"><li data-read>¿Dónde está la sal en el agua salada?</li><li data-read>¿Cómo comprobarías si una mezcla tiene una fase o más de una?</li></ol></div>
     <div class="row" style="gap:.8rem"><img class="pic sm" data-img="escribir" alt=""><img class="pic sm" data-img="dibujar" alt=""><img class="pic sm" data-img="hablar" alt="">
       <p data-read style="flex:1 1 14rem">Respondé escribiendo, dibujando con explicación, hablando o grabando un audio. Todas las formas valen lo mismo.</p></div>
-    <div class="ctl"><label for="ans">Si querés, escribí tu respuesta acá (no se envía a nadie)</label><textarea id="ans" placeholder="Creo que… porque…"></textarea>
+    <details class="more notes-more"><summary>Escribir o guardar una pregunta (opcional)</summary><div class="body">    <div class="ctl"><label for="ans">Si querés, escribí tu respuesta acá (no se envía a nadie)</label><textarea id="ans" placeholder="Creo que… porque…"></textarea>
       <div class="row"><button type="button" class="btn sm" data-copy="ans">Copiar mi respuesta</button><span class="note" data-msg="ans" role="status"></span></div></div>
     <div class="ctl"><label for="qprof">Una pregunta para la profe</label>
       <div class="row" style="flex-wrap:nowrap"><input type="text" id="qprof" placeholder="Escribí tu pregunta"><button type="button" class="btn sm" id="qAdd">Agregar</button></div>
       <ul class="qlist" id="qList" aria-label="Mis preguntas para la profe"></ul>
       <div class="row"><button type="button" class="btn sm" id="qCopy">Copiar mis preguntas</button><span class="note" id="qMsg" role="status"></span></div></div>
     <div class="ctl"><button type="button" class="btn sm" id="clearWork">Borrar mis respuestas y preguntas</button><span class="note" id="clearMsg" role="status"></span></div>
+</div></details>
   </section>
   <!-- 7 -->
   <section class="sec" id="s7" aria-labelledby="t7" data-title="Para ir más lejos">
@@ -513,7 +514,8 @@ const GL=[
  ['observar','Observar','Mirar con atención para distinguir componentes y fases.'],
  ['mezclar','Mezclar','Combinar materiales. En el experimento, se revuelve y se deja reposar.']
 ];
-$('#gl').innerHTML=GL.map(g=>`<details class="card"><summary>${g[0]?`<img class="pic sm" data-img="${g[0]}" alt="">`:''}${g[1]}</summary><div class="body"><p data-read data-say="${g[1]}. ${g[2]}">${g[2]}</p><div><button type="button" class="btn sm" data-say-btn>▶ Escuchar</button></div></div></details>`).join('');
+const renderWord=g=>`<details class="card"><summary>${g[0]?`<img class="pic sm" data-img="${g[0]}" alt="">`:''}${g[1]}</summary><div class="body"><p data-read data-say="${g[1]}. ${g[2]}">${g[2]}</p><div><button type="button" class="btn sm" data-say-btn>▶ Escuchar</button></div></div></details>`);
+$('#gl').innerHTML=GL.slice(0,5).map(renderWord).join('')+'<details class="more vocab-more"><summary>Ver más palabras</summary><div class="gl">'+GL.slice(5).map(renderWord).join('')+'</div></details>';
 $$('#gl img[data-img]').forEach(i=>{i.src=IMG[i.dataset.img]});
 $('#gl').addEventListener('click',e=>{const b=e.target.closest('[data-say-btn]');if(!b)return;const p=$('[data-read]',b.closest('.body'));readScope(p.parentElement,p.dataset.say.split('.')[0])});
 
