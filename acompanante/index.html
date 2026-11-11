@@ -161,6 +161,33 @@ footer.cred p{color:inherit}
 .game-callout{margin-top:1.6rem;background:var(--surface);border:2px solid var(--accent);border-radius:18px;padding:1.2rem;display:grid;gap:.75rem}
 .game-callout p{max-width:60ch}
 a.btn{text-decoration:none}
+/* Presentacion simplificada para proyectar y leer */
+body{font-size:1.3rem;line-height:1.55}
+.wrap{max-width:58rem}
+h1{font-size:clamp(2.25rem,4vw,3.1rem)}
+h2{font-size:clamp(1.75rem,3vw,2.15rem)}
+h3{font-size:1.45rem}
+.btn{min-height:3.1rem;padding:.55rem 1rem;font-size:1rem}
+.btn.sm{min-height:2.9rem;font-size:1rem}
+#status:empty{display:none}
+#status{min-height:0}
+header.hero{padding-block:1rem .5rem;gap:.6rem}
+.lead{font-size:1.3rem}
+.classbar{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem}
+.partcount{font-weight:700;background:var(--soft);border-radius:999px;padding:.45rem 1.1rem}
+.parts-menu{border:2px solid var(--line);border-radius:12px;background:var(--surface)}
+.parts-menu>summary{cursor:pointer;font-weight:700;padding:.6rem 1rem;min-height:3rem}
+.parts-menu nav.idx{padding:0 1rem 1rem}
+.sec{margin-top:1rem;padding:clamp(1rem,2.5vw,2rem);gap:1.25rem}
+.sec h2 .n{width:2.6rem;height:2.6rem;font-size:1.3rem}
+.pic{width:5.25rem;height:5.25rem}
+.pic.sm{width:4.1rem;height:4.1rem}
+.zoom img{max-height:35rem}
+.sec-nav button{flex:1 1 11rem;justify-content:center}
+body.one .game-callout{display:none}
+body.one.show-game .game-callout{display:grid}
+footer.cred .body{padding:1rem;display:grid;gap:.7rem}
+@media(max-width:40rem){.top .row{display:grid;grid-template-columns:1fr 1fr}.top .row .btn{justify-content:center}.sec>header{display:grid}.sec-nav{display:grid;grid-template-columns:1fr 1fr}.sec-nav button{font-size:.95rem;min-width:0}}
 </style>
 </head>
 <body>
@@ -197,15 +224,12 @@ a.btn{text-decoration:none}
 <div class="wrap" id="contenido">
   <nav aria-label="Volver a las experiencias de MIXLAB" style="padding-top:1rem"><a class="btn sm" href="../">← Inicio MIXLAB · Elegir experiencia</a></nav>
   <header class="hero">
-    <p class="eyebrow">Físico-Química · 1.º año · Acompañante de clase</p>
-    <h1 id="h1" tabindex="-1">¿Qué son las mezclas?</h1>
-    <p class="lead" data-read>Este es el mismo contenido del Anexo A impreso. Podés leerlo, escucharlo, ampliar las imágenes y volver cuando lo necesites. La profesora explica; esta página te acompaña.</p>
-    <p class="note">Ninguna parte es obligatoria ni tiene tiempo. Usá lo que te ayude. Tus respuestas y preguntas se guardan en este navegador, incluso si cerrás la página; no se envían a nadie. Si compartís el dispositivo, podés borrarlas al terminar.</p>
-    <p class="note">Para acompañar la explicación, marcá la parte que está explicando la profesora. La marca funciona solo en este dispositivo: no sincroniza automáticamente con otras pantallas.</p>
-    <div class="row"><button type="button" class="btn sm" id="goMark" hidden>Ir a la parte marcada</button></div>
-    <div class="row"><a class="btn" href="../juego/" aria-label="Abrir MIXLAB: juego de mezclas después del experimento">🎮 Ir al juego MIXLAB</a><span class="note">Para usar después del experimento, cuando sea el momento de practicar.</span></div>
-    <nav class="idx" aria-label="Partes del material"><ol id="idx"></ol></nav>
-  </header>
+<p class="eyebrow">Físico-Química · 1.º año</p>
+<h1 id="h1" tabindex="-1">¿Qué son las mezclas?</h1>
+<p class="lead" data-read>Leemos, observamos y descubrimos cómo se mezclan los materiales.</p>
+<div class="classbar"><span class="partcount" id="partCount" aria-live="polite">Parte 1 de 8</span><button type="button" class="btn sm" id="goMark" hidden>Ir a la parte marcada</button></div>
+<details class="parts-menu"><summary>Elegir otra parte de la clase</summary><nav class="idx" aria-label="Partes del material"><ol id="idx"></ol></nav></details>
+</header>
 
   <main id="main">
   <!-- 1 -->
@@ -326,9 +350,10 @@ $$('img[data-img]').forEach(i=>{i.src=IMG[i.dataset.img]});
 
 /* ---------- ajustes ---------- */
 const LS='mixlab-acomp-v1';
-const S={size:0,font:'atkinson',space:0,pal:'auto',ruler:false,slow:false,one:false,calm:false,ans:'',qs:[],mark:''};
+const S={size:1,font:'atkinson',space:0,pal:'auto',ruler:false,slow:false,one:true,calm:false,ans:'',qs:[],mark:''};
 try{Object.assign(S,JSON.parse(localStorage.getItem(LS)||'{}'))}catch(e){}
 const save=()=>{try{localStorage.setItem(LS,JSON.stringify(S))}catch(e){}};
+try{if(!localStorage.getItem('mixlab-clase-simple-v2')){S.one=true;S.size=Math.max(S.size,1);localStorage.setItem('mixlab-clase-simple-v2','1');save()}}catch(e){S.one=true;S.size=Math.max(S.size,1)}
 const SCALES=[1,1.15,1.3,1.5,1.75,2],LH=[1.7,1.9,2.1],LSP=[0,.04,.08];
 function say(t){$('#status').textContent=t}
 function apply(){
